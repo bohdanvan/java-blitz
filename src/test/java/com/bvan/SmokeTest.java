@@ -9,6 +9,7 @@ class SmokeTest {
 
     @Test
     void smokeTest() {
-        assertThat(new Smoke().foo()).isEqualTo("foo");
+        assertThat(new Smoke().foo())
+                .isEqualTo("foo");
     }
 }
