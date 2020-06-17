@@ -35,7 +35,7 @@ public class MessageServiceTest {
     }
 
     @Test
-    public void getMaxInstance_ifAllBatchesAreEmpty_happyPath() {
+    public void getMaxInstance_ifSomeBatchesAreEmpty_happyPath() {
         Instant maxInstant = Instant.MAX;
         List<List<Message>> list = generateBatchesWithMessages();
 
