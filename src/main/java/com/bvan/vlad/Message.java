@@ -1,7 +1,11 @@
 package com.bvan.vlad;
 
 import java.time.Instant;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Message {
 
     String id;
