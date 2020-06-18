@@ -51,7 +51,7 @@ public class MessageServiceTest {
         List<List<Message>> list = generateBatchesWithMessages();
 
         list.get(0).add(new Message("id", "", maxInstant));
-        list.get(5).add(new Message("id", "", maxInstant));
+        list.get(3).add(new Message("id", "", maxInstant));
 
         assertThat(service.getMaxInstant(list)).isEqualTo(maxInstant);
     }
@@ -60,12 +60,17 @@ public class MessageServiceTest {
         List<List<Message>> listOfBatchesMessages = new ArrayList<>();
         List<Message> batches = new ArrayList();
 
-        for (int i = 0; i < 10; i++) {
-            batches.add(new Message("myId" + i, "", Instant.now()));
-        }
-        for (int i = 0; i < 100; i++) {
-            listOfBatchesMessages.add(batches);
-        }
+        batches.add(new Message("","", Instant.now()));
+        batches.add(new Message("","", Instant.now()));
+        batches.add(new Message("","", Instant.now()));
+        batches.add(new Message("","", Instant.now()));
+        batches.add(new Message("","", Instant.now()));
+
+        listOfBatchesMessages.add(batches);
+        listOfBatchesMessages.add(batches);
+        listOfBatchesMessages.add(batches);
+        listOfBatchesMessages.add(batches);
+        listOfBatchesMessages.add(batches);
 
         return listOfBatchesMessages;
     }

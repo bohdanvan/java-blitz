@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Message {
-    String id;
-    String body;
-    Instant createdTime;
+    private final String id;
+    private final String body;
+    private final Instant createdTime;
 }
