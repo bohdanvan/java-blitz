@@ -19,12 +19,17 @@ public class MessageService {
         // one message in list null and other nonNull - should be work fine
         // instant in one message null - should be work fine
 
-        return batches.stream()
+        Message lastMessage = batches.stream()
                 .filter(Objects::nonNull)
                 .flatMap(Collection::stream)
                 .filter(message -> message != null && message.getCreatedDate() != null)
-                .max(Comparator.comparing(Message::getCreatedDate))
-                .orElseThrow(NoSuchElementException::new).getCreatedDate();
+                .max(Comparator.comparing(Message::getCreatedDate)).orElse(null);
+
+        if (lastMessage == null){
+            return null;
+        } else {
+            return lastMessage.getCreatedDate();
+        }
 
     }
 

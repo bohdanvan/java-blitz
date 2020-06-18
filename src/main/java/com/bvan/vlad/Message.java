@@ -8,16 +8,13 @@ import lombok.Setter;
 @Setter
 public class Message {
 
-    String id;
-    String body;
-    Instant createdDate;
+    private final String id;
+    private final String body;
+    private final Instant createdDate;
 
     public Message(String id, String body, Instant createdDate) {
         this.id = id;
         this.body = body;
         this.createdDate = createdDate;
-    }
-    public Instant getCreatedDate() {
-        return createdDate;
     }
 }

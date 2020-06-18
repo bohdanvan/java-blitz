@@ -1,12 +1,11 @@
 package com.bvan.vlad;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 
 public class MessageServiceTest {
@@ -25,7 +24,7 @@ public class MessageServiceTest {
         // when
         Instant instant = messageService.lastMessageDate(batches);
         // then
-        assertEquals(lastMessage.getCreatedDate(), instant);
+        assertThat(lastMessage.getCreatedDate()).isEqualTo(instant);
     }
 
     @Test
@@ -37,10 +36,11 @@ public class MessageServiceTest {
         }
         Message lastMessage = new Message("id", "last", Instant.now().plusSeconds(86400));
         batches.get(0).add(lastMessage);
+        batches.add(new ArrayList<>());
         // when
         Instant instant = messageService.lastMessageDate(batches);
         // then
-        assertEquals(lastMessage.getCreatedDate(), instant);
+        assertThat(lastMessage.getCreatedDate()).isEqualTo(instant);
     }
 
     @Test
@@ -48,8 +48,9 @@ public class MessageServiceTest {
         // given
         List<List<Message>> batches = new ArrayList<>();
         // when
-        assertThrows(NoSuchElementException.class, () -> messageService.lastMessageDate(batches));
-        // then throw exception
+        Instant instant = messageService.lastMessageDate(batches);
+        // then
+        assertNull(instant);
 
     }
 
@@ -60,8 +61,9 @@ public class MessageServiceTest {
         List<Message> messages = new ArrayList<>();
         batches.add(messages);
         // when
-        assertThrows(NoSuchElementException.class, () -> messageService.lastMessageDate(batches));
-        // then throw exception
+        Instant instant = messageService.lastMessageDate(batches);
+        // then
+        assertNull(instant);
 
     }
 
@@ -71,8 +73,9 @@ public class MessageServiceTest {
         List<List<Message>> batches = new ArrayList<>();
         batches.add(null);
         // when
-        assertThrows(NoSuchElementException.class, () -> messageService.lastMessageDate(batches));
-        // then throw exception
+        Instant instant = messageService.lastMessageDate(batches);
+        // then
+        assertNull(instant);
 
     }
 
@@ -89,7 +92,7 @@ public class MessageServiceTest {
         // when
         Instant instant = messageService.lastMessageDate(batches);
         // then
-        assertEquals(lastMessage.getCreatedDate(), instant);
+        assertThat(lastMessage.getCreatedDate()).isEqualTo(instant);
 
     }
 
@@ -106,7 +109,7 @@ public class MessageServiceTest {
         // when
         Instant instant = messageService.lastMessageDate(batches);
         // then
-        assertEquals(lastMessage.getCreatedDate(), instant);
+        assertThat(lastMessage.getCreatedDate()).isEqualTo(instant);
 
     }
 
@@ -123,7 +126,7 @@ public class MessageServiceTest {
         // when
         Instant instant = messageService.lastMessageDate(batches);
         // then
-        assertEquals(lastMessage.getCreatedDate(), instant);
+        assertThat(lastMessage.getCreatedDate()).isEqualTo(instant);
 
     }
 
