@@ -73,12 +73,12 @@ public class TopDbTest {
     private List<String> generate1000words() {
         List<String> arrayList = new LinkedList<>();
         for (int i = 0; i < 250; i++) {
+            arrayList.add("B");
+        }
+        for (int i = 0; i < 250; i++) {
             arrayList.add("A");
         }
 
-        for (int i = 0; i < 250; i++) {
-            arrayList.add("B");
-        }
         for (int i = 0; i < 500; i++) {
             arrayList.add("C");
         }

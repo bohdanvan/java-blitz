@@ -36,7 +36,7 @@ public class TopDb {
     public Map<String, Integer> top(Map<String, Integer> map) {
         return map.entrySet()
                 .stream()
-                .sorted((Map.Entry.<String, Integer>comparingByValue().reversed()))
+                .sorted((Map.Entry.<String, Integer>comparingByValue().reversed()).thenComparing(Map.Entry.<String, Integer>comparingByKey().reversed()))
                 .limit(100)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue,
                         LinkedHashMap::new));
